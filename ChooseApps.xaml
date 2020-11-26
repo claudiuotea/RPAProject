@@ -1,0 +1,116 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="ChooseApps" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Drawing;assembly=System.Drawing" xmlns:swf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="DictionarInstaller" Type="InOutArgument(scg:Dictionary(x:String, x:String))" />
+    <x:Property Name="ChoosenApps" Type="InOutArgument(scg:List(x:String))" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>438,796</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ChooseApps_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Windows.Forms</x:String>
+      <x:String>System.Windows.Forms.Layout</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.Windows.Forms</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="ChooseApps" sap:VirtualizedContainerService.HintSize="418,736" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Sequence DisplayName="Invoke Code" sap:VirtualizedContainerService.HintSize="376,644" sap2010:WorkflowViewState.IdRef="Sequence_3">
+      <Sequence.Variables>
+        <Variable x:TypeArguments="s:String[]" Name="apps" />
+        <Variable x:TypeArguments="swf:CheckedListBox" Name="checkedListBox1" />
+      </Sequence.Variables>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+        <Assign.To>
+          <OutArgument x:TypeArguments="s:String[]">[apps]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="s:String[]">[DictionarInstaller.Keys.ToArray()]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <ui:InvokeCode ContinueOnError="{x:Null}" Code="           Dim form As New System.Windows.forms.form&#xD;&#xA;&#x9;&#x9;   btnOK = New System.Windows.Forms.Button()&#xD;&#xA;   btnOK.Location = New System.Drawing.Point(48, 227)&#xD;&#xA;            btnOK.Name = &quot;btnOK&quot;&#xD;&#xA;            btnOK.Size = New System.Drawing.Size(111, 23)&#xD;&#xA;            btnOK.TabIndex = 1&#xD;&#xA;   btnOK.Width=200&#xD;&#xA;            btnOK.Text = &quot;Next&quot;&#xD;&#xA;&#x9;&#x9;&#x9;&#xD;&#xA;   checkedListBox1 = New System.Windows.Forms.CheckedListBox()&#xD;&#xA;            checkedListBox1.FormattingEnabled = True&#xD;&#xA;            checkedListBox1.Location = New System.Drawing.Point(48, 61)&#xD;&#xA;            checkedListBox1.Name = &quot;chkSelectOptions&quot;&#xD;&#xA;   checkedListBox1.Items.AddRange(apps)&#xD;&#xA;            checkedListBox1.Size = New System.Drawing.Size(138, 109)&#xD;&#xA;            checkedListBox1.TabIndex = 0&#xD;&#xA;   &#xD;&#xA;   &#xD;&#xA;            form.BackColor = System.Drawing.SystemColors.Window&#xD;&#xA;            form= New System.Windows.forms.form&#xD;&#xA;            form.Text=&quot;Select Countries&quot;&#xD;&#xA;            form.TopMost = True&#xD;&#xA;            form.AutoSize = False&#xD;&#xA;            form.AutoScaleDimensions = New System.Drawing.SizeF(6F, 13F)&#xD;&#xA;            form.Font = New System.Drawing.Font(&quot;Times New Roman&quot;, 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)&#xD;&#xA;            form.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font&#xD;&#xA;            form.ClientSize = New System.Drawing.Size(300, 300)&#xD;&#xA;            form.Controls.Add(checkedListBox1)&#xD;&#xA;   form.Controls.Add(btnOK)&#xD;&#xA;            form.Name = &quot;Form1&quot;&#xD;&#xA;&#x9;&#x9;&#x9;AddHandler btnOK.Click, Sub(sender As Object,e As EventArgs) form.Close()&#xD;&#xA;            form.ShowDialog()&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;   &#xD;&#xA;" DisplayName="Invoke code" sap:VirtualizedContainerService.HintSize="334,164" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
+        <ui:InvokeCode.Arguments>
+          <InOutArgument x:TypeArguments="swf:CheckedListBox" x:Key="checkedListBox1">[checkedListBox1]</InOutArgument>
+          <InArgument x:TypeArguments="sd:SizeF" x:Key="AutoScaleDimensions" />
+          <InArgument x:TypeArguments="swf:AutoScaleMode" x:Key="AutoScaleMode" />
+          <InArgument x:TypeArguments="sd:Size" x:Key="ClientSize" />
+          <InArgument x:TypeArguments="swf:Control" x:Key="Controls" />
+          <InOutArgument x:TypeArguments="s:String[]" x:Key="apps">[apps]</InOutArgument>
+          <InOutArgument x:TypeArguments="swf:Button" x:Key="btnOK" />
+        </ui:InvokeCode.Arguments>
+      </ui:InvokeCode>
+      <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="Checked Items" sap:VirtualizedContainerService.HintSize="334,248" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[checkedListBox1.CheckedItems]">
+        <ui:ForEach.Body>
+          <ActivityAction x:TypeArguments="x:Object">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="x:Object" Name="item" />
+            </ActivityAction.Argument>
+            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="242,114" sap2010:WorkflowViewState.IdRef="Sequence_2">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <AddToCollection x:TypeArguments="x:String" Collection="[ChoosenApps]" DisplayName="Add To Collection" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddToCollection`1_1" Item="[item.ToString]" />
+            </Sequence>
+          </ActivityAction>
+        </ui:ForEach.Body>
+      </ui:ForEach>
+    </Sequence>
+  </Sequence>
+</Activity>
